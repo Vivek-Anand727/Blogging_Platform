@@ -1,7 +1,10 @@
 import { checkUserSession } from "@/lib/auth";
 import Image from "next/image";
+import { useAuthExpiration } from "@/hooks/useAuthExpiration";
+
 
 export default async function Dashboard() {
+  useAuthExpiration();
   const session = await checkUserSession();
 
   if (!session || !session.user) return <p className="text-center text-lg text-gray-500">Loading...</p>;
