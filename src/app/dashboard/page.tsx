@@ -1,3 +1,4 @@
+"use client"
 import { checkUserSession } from "@/lib/auth";
 import Image from "next/image";
 import { useAuthExpiration } from "@/hooks/useAuthExpiration";
