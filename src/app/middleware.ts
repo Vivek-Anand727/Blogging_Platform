@@ -15,7 +15,7 @@ export async function middleware (req : NextRequest){
         }
     
         var decodedToken = jwt.verify(token,process.env.JWT_SECRET as string) as JwtPayload;
-        var {id , email} = decodedToken;
+        var {id , email, role} = decodedToken;
 
         const isRateLimitResult = await rateLimit(id,10,60);
         if(!isRateLimitResult.allowed){
@@ -34,6 +34,7 @@ export async function middleware (req : NextRequest){
         const requestHeader = new Headers(req.headers);
         requestHeader.set("email",email);
         requestHeader.set("id",id);
+        requestHeader.set("role", role);
         
         return NextResponse.next({request : {headers : requestHeader }});
         

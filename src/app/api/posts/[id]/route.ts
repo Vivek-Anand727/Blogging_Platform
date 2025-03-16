@@ -10,7 +10,7 @@ export async function DELETE(req:NextRequest, { params } :{params : { id:string}
 
     const post = await db?.collection("posts").findOne({_id : new ObjectId(id)});
     if (!post) return NextResponse.json({ success: false, message: "Post not found" }, { status: 404 });
-
+    const {page} = await req.json(); 
 
     const authorUser = req.headers.get("id");
     if(!authorUser || post.author.toString() !== authorUser)
@@ -21,8 +21,12 @@ export async function DELETE(req:NextRequest, { params } :{params : { id:string}
 
     await db?.collection("posts").deleteOne({_id : new ObjectId(id)});
 
-    await client.del("all-posts");
     await client.del(`post-${id}`);
+
+    const cachedPages : any = await client.keys("post-page-*");
+    if(cachedPages.length > 0 ){
+        await client.del(...cachedPages);
+    } 
 
     return NextResponse.json({
         success : true,
@@ -100,3 +104,4 @@ export async function PUT(req:NextRequest, { params } :{params : { id:string}}){
         message : "Post updated successfully"
     },{status:200})
 }
+
