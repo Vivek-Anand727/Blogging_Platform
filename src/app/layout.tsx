@@ -1,20 +1,14 @@
-"use client"
+import Layout from "./components/shared/Layout";
+import { ThemeProvider } from "./components/ui/theme-provider";
 import "./globals.css";
-import { SessionProvider } from "next-auth/react";
-import AuthButton from "./components/AuthButtons";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <SessionProvider>
-          <AuthButton />
-          {children}
-        </SessionProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Layout>{children}</Layout>
+        </ThemeProvider>
       </body>
     </html>
   );
