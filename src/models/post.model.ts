@@ -19,8 +19,7 @@ const postSchema = new mongoose.Schema({
         required : true,
     },
     author:{
-        type : mongoose.Schema.Types.ObjectId,
-        ref : "User",
+        type : String,
         required : true
     },
     tags: {
@@ -81,4 +80,4 @@ postSchema.pre("validate", async function (next) {
 
 
 
-export const Post = mongoose.model("Post", postSchema)
+export const Post = mongoose.models.Post ||mongoose.model("Post", postSchema)

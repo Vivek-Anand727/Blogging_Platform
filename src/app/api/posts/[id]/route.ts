@@ -126,7 +126,7 @@ export async function DELETE(req: NextRequest) {
 
 //GETTING
 export async function GET(req:NextRequest, { params } :{params : { id:string}}){
-    const {id} = params;
+    const {id} = await params;
     const {db} = await connectToDB();
     const cachedData = await client.get(`post-${id}`);
     if(cachedData){

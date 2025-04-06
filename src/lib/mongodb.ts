@@ -4,12 +4,12 @@ export async function connectToDB() {
     try {
         if (mongoose.connection.readyState === 1) {
             console.log("Already connected to DB");
-            return mongoose.connection; // ✅ Return existing connection
+            return mongoose.connection; 
         }
 
         await mongoose.connect(process.env.MONGODB_URI!, {
             ssl: true,
-            tlsAllowInvalidCertificates: true, // Allow invalid TLS certificates
+            tlsAllowInvalidCertificates: true, 
         });
 
         const connection = mongoose.connection;
@@ -25,7 +25,7 @@ export async function connectToDB() {
             process.exit();
         });
 
-        return connection; // ✅ Return the connection instance
+        return connection; 
     } catch (error) {
         console.error("Something went wrong while connecting to DB", error);
         throw error;

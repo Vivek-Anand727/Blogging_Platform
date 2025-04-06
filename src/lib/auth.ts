@@ -14,7 +14,6 @@ export async function checkUserSession() {
   if (!user) {
     redirect("/api/auth/signin");
   } else {
-      console.log(user);
     return user;
   }
 }

@@ -1,20 +1,32 @@
-// /components/ui/Navbar/Navbar.tsx
-
-import DarkModeToggle from "../DarkModeToggle/DarkModeToggle";
+"use client";
 import { ModeToggle } from "../ui/theme-toggle";
+import Search from "./Search";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
+  const router = useRouter();
+
+  const handleSelect = (postId: string) => {
+    router.push(`/blog/${postId}`);
+  };
+
   return (
     <header className="py-4 px-6 bg-gray-900 text-white flex justify-between items-center shadow-md">
-      <span className="text-xl font-semibold">Logo</span>
+      <span className="text-2xl font-bold">Logo</span>
+
       <nav>
-        <ul className="flex space-x-4">
-          <li><a href="#" className="hover:text-gray-300">Home</a></li>
-          <li><a href="#" className="hover:text-gray-300">Posts</a></li>
-          <li><a href="#" className="hover:text-gray-300">Contact</a></li>
+        <ul className="flex space-x-6 text-lg">
+          <li><a href="/" className="hover:text-gray-400 transition-colors">Home</a></li>
+          <li><a href="/profile" className="hover:text-gray-400 transition-colors">My Profile</a></li>
+          <li><a href="/dashboard" className="hover:text-gray-400 transition-colors">Dashboard</a></li>
         </ul>
       </nav>
-      <ModeToggle /> 
+
+      <div className="relative flex items-center bg-gray-800 px-3 py-1 rounded-lg">
+        <Search onSelect={handleSelect} />
+      </div>
+
+      <ModeToggle />
     </header>
   );
 };

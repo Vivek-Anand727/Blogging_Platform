@@ -17,7 +17,7 @@ export function useAuthExpiration() {
     }
 
     try {
-      const decodedToken = JSON.parse(atob(token.split(".")[1])); // Decode token without verifying
+      const decodedToken = JSON.parse(atob(token.split(".")[1])); 
 
       const expiresIn = decodedToken.exp * 1000 - Date.now();
       if (expiresIn <= 0) {
