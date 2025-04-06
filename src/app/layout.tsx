@@ -6,15 +6,14 @@ import AuthProvider from "./components/providers/SessionProvider";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
-        
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Layout>
-          <AuthProvider>
-            {children}
+            <AuthProvider>
+              {children}
             </AuthProvider>
-            </Layout>
+          </Layout>
         </ThemeProvider>
       </body>
     </html>
