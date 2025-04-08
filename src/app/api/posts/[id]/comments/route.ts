@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 // POST - Add a comment
 export async function POST(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { db } = await connectToDB();
@@ -92,7 +92,7 @@ export async function POST(
 // GET - Retrieve comments for a post
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { db } = await connectToDB();
