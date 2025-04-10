@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Blog Project
 
-## Getting Started
+## 🚀 Overview
+This is a fully functional and optimized blog website built with **Next.js**. The project follows best practices and includes features such as authentication, full-text search, caching, infinite scrolling, and dark mode.
 
-First, run the development server:
+## 🎯 Features
+- **Next.js 14 with App Router**
+- **Server-side Rendering (SSR) & Static Site Generation (SSG)**
+- **Authentication with NextAuth**
+- **Redux Toolkit for state management**
+- **MongoDB with Mongoose ORM**
+- **Full-text search using MongoDB text indexing**
+- **Optimistic UI updates**
+- **Debounced search with dropdown suggestions**
+- **Infinite scrolling for posts**
+- **Caching with Upstash Redis**
+- **Dark mode support with Theme Toggle**
+- **Skeleton loading for improved UX**
+- **Smooth animations & elegant UI using Tailwind CSS & ShadCN**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🛠️ Tech Stack
+- **Frontend:** Next.js, React, Tailwind CSS, ShadCN
+- **Backend:** Next.js API Routes, MongoDB, Upstash Redis
+- **Authentication:** NextAuth.js
+- **State Management:** Redux Toolkit
+- **Deployment:** Vercel
+
+## 📂 Folder Structure
+```
+📦 nextjs-blog
+├── 📂 app                # Next.js App Router structure
+│   ├── 📂 api            # API routes
+│   ├── 📂 posts          # Blog pages
+│   ├── 📂 auth           # Authentication pages
+│   ├── 📂 search         # Search functionality
+│   ├── layout.tsx        # Main layout
+│   ├── page.tsx         # Homepage
+├── 📂 components         # Reusable UI components
+│   ├── 📂 shared        # Shared components (Navbar, Footer, DarkModeToggle)
+├── 📂 hooks              # Custom hooks (useFetchPosts, useDebounce, etc.)
+├── 📂 lib                # Utility functions (caching, fetching, etc.)
+├── 📂 store              # Redux store configuration
+├── 📂 styles             # Global styles
+├── .env.local            # Environment variables
+├── next.config.js        # Next.js configuration
+├── tailwind.config.js    # Tailwind CSS configuration
+├── README.md             # Project documentation
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🏗️ Setup & Installation
+### 1️⃣ Clone the Repository
+```sh
+git clone https://github.com/your-username/nextjs-blog.git
+cd nextjs-blog
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 2️⃣ Install Dependencies
+```sh
+npm install
+# or
+pnpm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3️⃣ Setup Environment Variables
+Create a `.env.local` file and add the necessary environment variables:
+```
+MONGODB_URI=your_mongodb_connection_string
+NEXTAUTH_SECRET=your_nextauth_secret
+NEXTAUTH_URL=http://localhost:3000
+UPSTASH_REDIS_URL=your_upstash_redis_url
+```
 
-## Learn More
+### 4️⃣ Run the Development Server
+```sh
+npm run dev
+# or
+pnpm dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠️ API Routes
+| Method | Endpoint            | Description |
+|--------|---------------------|-------------|
+| `POST` | `/api/posts/like`   | Like a post |
+| `POST` | `/api/posts/comments` | Add a comment |
+| `GET`  | `/api/search`       | Full-text search |
+| `POST` | `/api/auth/signin`  | User login |
+| `POST` | `/api/auth/signout` | User logout |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📌 Upcoming Features
+- **Admin Dashboard** (For managing posts & users)
+- **Email Notifications** using Nodemailer
+- **Post Categories & Tags**
+- **Image Uploads for Blog Posts**
 
-## Deploy on Vercel
+## 📜 License
+This project is open-source and available under the MIT License.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 💡 Contributing
+If you have suggestions or improvements, feel free to open an issue or submit a pull request.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+🚀 **Built with passion and Next.js!**
